@@ -76,7 +76,7 @@ app.post("/movies/", async (request, response) => {
      VALUES
     ('${directorId}', '${movieName}', '${leadActor}');`;
     const movies = await db.run(addMovieQuery);
-    response.send("Movie Added Successfully");
+    response.send("Movie Successfully Added");
   } catch (e) {
     console.log(`DB Error ${e.message}`);
   }
@@ -145,7 +145,7 @@ app.get("/directors/", async (request, response) => {
   const directorsArray = await db.all(getDirectorsQuery);
   response.send(
     directorsArray.map((eachItem) => {
-      return convertDbObjectToResponseDirectorObject(eachItem);
+      return convertDbObjectToResponseObjectDirector(eachItem);
     })
   );
 });
